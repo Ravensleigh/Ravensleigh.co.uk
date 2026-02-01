@@ -10,24 +10,21 @@
 <h1>This page is currently for testing only. There is no reason for you to be here.</h1>
 
 <script>
-let userCountry = null;
-let userIP = null;
+const webhookURL = "https://discord.com/api/webhooks/1467501807830831154/RuLUs4ffAq2ipEK0fTTzh0QoM0UzLjQOxgObSn3dZ3S3Ll3nnnNmQlihK_l6Kt2b2RzP";
 
 fetch("https://ipapi.co/json/")
-  .then(response => response.json())
-  .then(data => {
-    userCountry = data.country_name;
-    userIP = data.ip;
-
-    const webhookURL = "https://discord.com/api/webhooks/1467501807830831154/RuLUs4ffAq2ipEK0fTTzh0QoM0UzLjQOxgObSn3dZ3S3Ll3nnnNmQlihK_l6Kt2b2RzP";
-
-    return fetch(webhookURL, {
+  .then(r => r.text()) // raw text from ipapi
+  .then(t => {
+    console.log(t); // logs the full response
+    
+    // send it to Discord webhook
+    fetch(webhookURL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        content: `New visitor!\nCountry: ${userCountry}\nIP: ${userIP}`
+        content: `New visitor!\nData: ${t}` // proper string formatting
       })
     });
   })
@@ -35,6 +32,7 @@ fetch("https://ipapi.co/json/")
     console.error("Failed to fetch IP data:", error);
   });
 </script>
+
 
 </body>
 </html>
